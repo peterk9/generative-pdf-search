@@ -1,0 +1,42 @@
+{
+  "name": "playground-app",
+  "version": "1.0.0",
+  "description": "playground app for testing dependencies and running experiments",
+  "author": "Kevin Peters",
+  "main": "dist/index.js",
+  "engines": {
+    "node": "18.16.0",
+    "npm": "9.5.1"
+  },
+  "scripts": {
+    "pre-build": "npm run lint",
+    "build": "tsc -p .",
+    "test": "node --loader tsx --test ./src/*.spec.ts",
+    "start": "node dist/index.js",
+    "script:createSchema": "nodemon ./src/services/weaviate/scripts/createSchema.ts",
+    "script:upload": "nodemon ./src/services/weaviate/scripts/upload.ts",
+    "start:watch": "nodemon ./src/services/weaviate/scripts/upload.ts",
+    "ts-start": "ts-node src/index.ts",
+    "lint-fix": "eslint . --fix",
+    "lint": "eslint ."
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@tsconfig/node18": "^1.0.1",
+    "@types/express": "^4.17.17",
+    "@types/node": "^18.15.11",
+    "@types/pdf-parse": "^1.1.1",
+    "@typescript-eslint/eslint-plugin": "^5.58.0",
+    "@typescript-eslint/parser": "^5.58.0",
+    "eslint": "^8.38.0",
+    "nodemon": "^2.0.22",
+    "ts-node": "^10.9.1",
+    "tsx": "^3.12.6",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "pdf-parse": "^1.1.1",
+    "weaviate-ts-client": "^1.1.0"
+  }
+}
